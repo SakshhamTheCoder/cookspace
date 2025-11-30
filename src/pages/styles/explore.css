@@ -1,18 +1,12 @@
-/* Explore page grid and card styles */
-
 .explore-title {
     text-align: center;
-    margin: 32px 0 18px 0;
 }
 
 .explore-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 28px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 16px 48px 16px;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
 .explore-card {

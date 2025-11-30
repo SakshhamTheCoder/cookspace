@@ -1,9 +1,11 @@
-import './styles/home.css';
 import { Link } from 'react-router-dom';
-import Button from '../components/Button';
 import { getAllRecipes } from '../utils/recipeStore';
+import Button from '../components/Button';
+import './styles/home.css';
 
-const items = getAllRecipes().filter((recipe) => !recipe.isLocal);
+const items = getAllRecipes()
+    .filter((recipe) => !recipe.isLocal)
+    .slice(0, 4);
 
 const Home = () => {
     return (
@@ -23,11 +25,11 @@ const Home = () => {
                     <p>Browse through a wide variety of recipes from around the world.</p>
                 </div>
                 <div className="recipe-grid">
-                    {items.map((item, index) => (
-                        <Link to={`/recipe/${index}`} key={index} className="recipe-card">
+                    {items.map((item) => (
+                        <Link to={`/recipe/${item.id}`} key={item.id} className="recipe-card">
                             <img src={item.image} alt={item.name} className="recipe-image" />
                             <h3>{item.name}</h3>
-                            <p>{item.description}</p>
+                            <i>{item.description}</i>
                             <p>Time to Cook: {item.timeToCook}</p>
                             <p>Serves: {item.serves}</p>
                         </Link>

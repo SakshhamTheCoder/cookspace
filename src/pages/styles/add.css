@@ -1,37 +1,38 @@
-/* Minimal Add Recipe form styles (kept separate from recipe.css) */
-:root {
-    --card-bg: #fff;
-    --page-bg: #f9f9f9;
-    --accent: #007185;
-}
+/* ================================
+   Global Add Recipe Page Styling
+================================ */
 
-.recipe-page-layout {
-    background: var(--page-bg);
+.add-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
 }
 
 .add-form-container {
+    align-self: center;
     display: flex;
     justify-content: center;
     width: 100%;
     padding: 20px 16px 60px 16px;
     box-sizing: border-box;
+    max-width: 1000px;
 }
 
 .add-recipe-form {
     width: 100%;
-    max-width: 900px;
-    background: var(--card-bg);
+    background: #fff;
     border-radius: 10px;
     padding: 28px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     box-sizing: border-box;
 }
 
 .add-recipe-form h2 {
-    margin: 0 0 6px 0;
+    margin: 0 0 10px 0;
 }
 
 .add-recipe-form label {
@@ -43,7 +44,8 @@
 }
 
 .add-recipe-form input,
-.add-recipe-form textarea {
+.add-recipe-form textarea,
+.add-recipe-form select {
     padding: 10px 12px;
     border: 1px solid #e6e6e6;
     border-radius: 8px;
@@ -52,32 +54,23 @@
     box-sizing: border-box;
 }
 
-.form-row {
-    display: flex;
-    gap: 12px;
-}
-.form-actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 6px;
+.add-recipe-form textarea {
+    resize: vertical;
+    min-height: 130px;
 }
 
-.primary {
-    background: var(--accent);
-    color: white;
-    padding: 8px 14px;
-    border-radius: 8px;
-    border: none;
+input[type='file'] {
+    padding: 6px 4px;
     cursor: pointer;
 }
 
-.form-error {
-    color: #b00020;
-    padding: 8px 0;
-}
-.form-success {
-    color: #0a7a00;
-    padding: 8px 0;
+/* ================================
+   ROW LAYOUT
+================================ */
+
+.form-row {
+    display: flex;
+    gap: 12px;
 }
 
 @media (max-width: 700px) {
@@ -86,9 +79,14 @@
     }
 }
 
+/* ================================
+   IMAGE PREVIEW
+================================ */
+
 .image-preview {
     margin-top: 12px;
 }
+
 .image-preview img {
     max-width: 280px;
     width: 100%;
@@ -97,7 +95,115 @@
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
 }
 
-input[type='file'] {
-    padding: 6px 4px;
+/* ================================
+   FEEDBACK MESSAGES
+================================ */
+
+.form-error {
+    color: #b00020;
+    padding: 8px 0;
+    font-size: 0.95rem;
 }
+
+.form-success {
+    color: #0a7a00;
+    padding: 8px 0;
+    font-size: 0.95rem;
+}
+
+/* ================================
+   BUTTON ROW
+================================ */
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+/* ================================
+   INGREDIENT SECTION (NEW)
+================================ */
+
+.ingredient-section-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #222;
+    margin-top: 16px;
+    margin-bottom: 4px;
+}
+
+/* Input row for ingredient + quantity + add button */
+.ingredient-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.ingredient-row label {
+    flex: 1;
+}
+
+.ingredient-row button {
+    height: 42px;
+}
+
+/* Preview list container */
+.ingredient-preview-list {
+    margin-top: 10px;
+    padding: 4px;
+    background: #fafafa;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    list-style: none;
+}
+
+.ingredient-preview-list li {
+    padding: 4px;
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 0.95rem;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ingredient-preview-list li:last-child {
+    border-bottom: none;
+}
+
+.ingredient-remove {
+    color: #b00020;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* ================================
+   SERVES DROPDOWN (NEW)
+================================ */
+
+.add-recipe-form select {
+    cursor: pointer;
+    background: #fff;
+}
+
+/* ================================
+   YOUTUBE FIELD
+================================ */
+
+.youtube-input {
+    font-size: 0.95rem;
+}
+
+/* Better spacing for section headers */
+.add-recipe-form h3 {
+    margin-top: 20px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #222;
+}
+
+/* ================================
+   END OF ADD FORM CSS
+================================ */
 
