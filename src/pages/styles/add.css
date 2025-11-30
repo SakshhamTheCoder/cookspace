@@ -1,0 +1,103 @@
+/* Minimal Add Recipe form styles (kept separate from recipe.css) */
+:root {
+    --card-bg: #fff;
+    --page-bg: #f9f9f9;
+    --accent: #007185;
+}
+
+.recipe-page-layout {
+    background: var(--page-bg);
+}
+
+.add-form-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 16px 60px 16px;
+    box-sizing: border-box;
+}
+
+.add-recipe-form {
+    width: 100%;
+    max-width: 900px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 28px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.add-recipe-form h2 {
+    margin: 0 0 6px 0;
+}
+
+.add-recipe-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.95rem;
+    color: #222;
+}
+
+.add-recipe-form input,
+.add-recipe-form textarea {
+    padding: 10px 12px;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.form-row {
+    display: flex;
+    gap: 12px;
+}
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.primary {
+    background: var(--accent);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.form-error {
+    color: #b00020;
+    padding: 8px 0;
+}
+.form-success {
+    color: #0a7a00;
+    padding: 8px 0;
+}
+
+@media (max-width: 700px) {
+    .form-row {
+        flex-direction: column;
+    }
+}
+
+.image-preview {
+    margin-top: 12px;
+}
+.image-preview img {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+}
+
+input[type='file'] {
+    padding: 6px 4px;
+}
+

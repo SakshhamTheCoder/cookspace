@@ -18,8 +18,11 @@ const Navbar = () => {
                 <NavLink to="/add" className={({ isActive }) => (isActive ? 'navbar-link active' : 'navbar-link')}>
                     ADD RECIPE
                 </NavLink>
-                <NavLink to="/saved" className={({ isActive }) => (isActive ? 'navbar-link active' : 'navbar-link')}>
-                    SAVED
+                <NavLink
+                    to="/bookmarks"
+                    className={({ isActive }) => (isActive ? 'navbar-link active' : 'navbar-link')}
+                >
+                    BOOKMARKS
                 </NavLink>
             </div>
         </nav>

@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Explore from './pages/Explore';
 import AddRecipe from './pages/AddRecipe';
 import Recipe from './pages/Recipe';
-import SavedRecipe from './pages/SavedRecipe';
+import Bookmarks from './pages/Bookmarks';
 
 const App = () => {
     return (
@@ -15,7 +15,7 @@ const App = () => {
                 <Route path="/explore" element={<Explore />} />
                 <Route path="/add" element={<AddRecipe />} />
                 <Route path="/recipe/:id" element={<Recipe />} />
-                <Route path="/saved" element={<SavedRecipe />} />
+                <Route path="/bookmarks" element={<Bookmarks />} />
             </Routes>
         </Router>
     );
