@@ -36,8 +36,9 @@
 
 @media (max-width: 768px) {
     .explore-grid {
-        grid-template-columns: repeat(2, minmax(150px, 1fr));
+        grid-template-columns: repeat(1, minmax(150px, 1fr));
         gap: 15px;
         padding: 15px;
     }
 }
+

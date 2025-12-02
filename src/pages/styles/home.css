@@ -76,7 +76,7 @@
 
 @media (max-width: 768px) {
     .recipe-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(1, minmax(150px, 1fr));
         gap: 15px;
         padding: 10px 0;
     }
