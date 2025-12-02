@@ -65,26 +65,28 @@
     margin-bottom: 10px;
 }
 
-.explore-link-secondary {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
-
-.explore-link-secondary:hover {
-    background-color: #555;
-}
-
 @keyframes rotate {
     from {
         transform: rotate(0deg);
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .recipe-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        padding: 10px 0;
+    }
+
+    .home-image img {
+        max-width: 60%;
+    }
+
+    .recipe-content {
+        min-height: 125vh;
     }
 }
 

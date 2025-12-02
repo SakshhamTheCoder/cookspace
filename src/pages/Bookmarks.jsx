@@ -10,8 +10,12 @@ const Bookmarks = () => {
     }
 
     return (
-        <div className="bookmarks-page-layout">
-            <h2 className="bookmarks-title">Bookmarked Recipes</h2>
+        <div className="page-layout">
+            <div className="bookmarks-title">
+                <h2>Bookmarked Recipes</h2>
+                <p>Here are the recipes you've bookmarked for easy access. Click on any recipe to view its details.</p>
+            </div>
+
             <div className="bookmarks-grid">
                 {bookmarks.map((recipe) => (
                     <Link to={`/recipe/${recipe.id}`} className="bookmarks-card" key={recipe.id}>

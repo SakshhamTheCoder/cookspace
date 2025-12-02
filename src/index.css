@@ -32,14 +32,10 @@ body {
     border-radius: 0 0 10px 10px;
 }
 
-.navbar-social {
-    display: flex;
-    gap: 10px;
-}
-
 .navbar-links {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .navbar-links a {
@@ -100,5 +96,35 @@ body {
 .primary-button:hover {
     background-color: #555;
     text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .page-layout {
+        padding: 10px;
+        min-height: auto;
+    }
+
+    .primary-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+        gap: 8px;
+    }
+
+    .navbar-links-left,
+    .navbar-links-right {
+        justify-content: center;
+    }
+
+    .navbar-link {
+        padding: 4px 8px;
+    }
 }
 
