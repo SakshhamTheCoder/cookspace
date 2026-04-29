@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import api from '../utils/api';
-import Button from '../components/Button';
 import './styles/add.css';
 
 const AddRecipe = () => {
+    const { id } = useParams();
     const navigate = useNavigate();
+    const isEdit = Boolean(id);
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -15,29 +16,43 @@ const AddRecipe = () => {
     const [availableTags, setAvailableTags] = useState([]);
     const [stepsText, setStepsText] = useState('');
     const [videoInput, setVideoInput] = useState('');
-
     const [image, setImage] = useState('');
-    const fileRef = useRef(null);
-
+    const [ingredients, setIngredients] = useState([]);
+    
     const [ingredientName, setIngredientName] = useState('');
     const [ingredientQty, setIngredientQty] = useState('');
-    const [ingredients, setIngredients] = useState([]);
-
+    
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const [loading, setLoading] = useState(false);
+    const fileRef = useRef(null);
 
     useEffect(() => {
-        const fetchAvailableTags = async () => {
+        const fetchData = async () => {
             try {
-                const res = await api.get('/recipes/tags');
-                setAvailableTags(res.data);
+                const tagsRes = await api.get('/recipes/tags');
+                setAvailableTags(tagsRes.data);
+
+                if (isEdit) {
+                    const recipeRes = await api.get(`/recipes/${id}`);
+                    const r = recipeRes.data;
+                    setName(r.name);
+                    setDescription(r.description);
+                    setTime(r.cookingTime);
+                    setServes(String(r.serves));
+                    setSelectedTags(r.tags || []);
+                    setIngredients(r.ingredients || []);
+                    setStepsText(r.steps?.join('\n') || '');
+                    setImage(r.image || '');
+                    setVideoInput(r.videoUrl || '');
+                }
             } catch (error) {
-                console.error('Failed to fetch tags', error);
+                console.error('Failed to fetch data', error);
+                setError('Could not load recipe data.');
             }
         };
-        fetchAvailableTags();
-    }, []);
+        fetchData();
+    }, [id, isEdit]);
 
     const handleAddIngredient = () => {
         if (!ingredientName.trim() || !ingredientQty.trim()) return;
@@ -74,12 +89,12 @@ const AddRecipe = () => {
             return setError('Please provide the preparation steps.');
         }
 
-        let videoUrl = '';
-        if (videoInput.trim()) {
+        let videoUrl = videoInput;
+        if (videoInput.trim() && videoInput.includes('watch?v=')) {
             videoUrl = videoInput.replace('watch?v=', 'embed/');
         }
 
-        const newRecipe = {
+        const recipeBody = {
             name,
             description,
             cookingTime: time,
@@ -92,11 +107,16 @@ const AddRecipe = () => {
         };
 
         try {
-            await api.post('/recipes', newRecipe);
-            setSuccess('Your culinary creation has been published!');
-            setTimeout(() => navigate('/explore'), 1200);
+            if (isEdit) {
+                await api.put(`/recipes/${id}`, recipeBody);
+                setSuccess('Recipe updated successfully!');
+            } else {
+                await api.post('/recipes', recipeBody);
+                setSuccess('Your culinary creation has been published!');
+            }
+            setTimeout(() => navigate(isEdit ? `/recipe/${id}` : '/explore'), 1200);
         } catch (err) {
-            setError(err.response?.data?.message || 'Failed to publish recipe.');
+            setError(err.response?.data?.message || 'Failed to save recipe.');
         } finally {
             setLoading(false);
         }
@@ -105,9 +125,11 @@ const AddRecipe = () => {
     return (
         <div className="add-recipe-page page-layout">
             <header className="add-header">
-                <span className="add-tagline">Recipe Studio</span>
-                <h1 className="add-title">Publish Your Creation</h1>
-                <p className="add-desc">Share your culinary secrets with the CookSpace community.</p>
+                <span className="add-tagline">{isEdit ? 'Kitchen Edit' : 'Recipe Studio'}</span>
+                <h1 className="add-title">{isEdit ? 'Refine Your Recipe' : 'Publish Your Creation'}</h1>
+                <p className="add-desc">
+                    {isEdit ? 'Tweak the ingredients, timing, or steps of your published masterpiece.' : 'Share your culinary secrets with the CookSpace community.'}
+                </p>
             </header>
 
             <div className="add-container">
@@ -195,7 +217,7 @@ const AddRecipe = () => {
                                         const reader = new FileReader();
                                         reader.onload = () => setImage(reader.result);
                                         reader.readAsDataURL(file);
-                                    }} required />
+                                    }} required={!isEdit} />
                                     <div className="upload-placeholder">
                                         {image ? 'Change Image' : 'Select a high-quality photo'}
                                     </div>
@@ -262,10 +284,10 @@ const AddRecipe = () => {
 
                     <footer className="form-footer">
                         <button type="submit" className="submit-btn" disabled={loading}>
-                            {loading ? 'Publishing...' : 'Publish Recipe'}
+                            {loading ? (isEdit ? 'Updating...' : 'Publishing...') : (isEdit ? 'Update Recipe' : 'Publish Recipe')}
                         </button>
-                        <button type="button" className="reset-btn" onClick={() => window.location.reload()}>
-                            Clear All
+                        <button type="button" className="reset-btn" onClick={() => navigate(-1)}>
+                            Cancel
                         </button>
                     </footer>
                 </form>

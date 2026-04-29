@@ -1,0 +1,142 @@
+.analytics-page {
+    max-width: 1000px;
+}
+
+.analytics-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.analytics-tagline {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: var(--burnt-sienna);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.analytics-title {
+    font-size: 3rem;
+    font-family: var(--font-display);
+    margin-bottom: 1rem;
+}
+
+.analytics-desc {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+}
+
+.analytics-card {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.card-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-main);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+    margin-top: 0.5rem;
+}
+
+.card-note {
+    font-size: 0.85rem;
+    color: #999;
+    border-top: 1px solid #f9f9f9;
+    padding-top: 1.5rem;
+    font-style: italic;
+}
+
+.card-note b {
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+.tags-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.tag-row {
+    display: grid;
+    grid-template-columns: 40px 120px 1fr 40px;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tag-rank {
+    font-weight: 600;
+    color: #ccc;
+}
+
+.tag-name {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.tag-bar-container {
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.tag-bar {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+    transition: width 1s ease-out;
+}
+
+.tag-count {
+    text-align: right;
+    font-weight: 600;
+    color: #666;
+}
+
+@media (max-width: 850px) {
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+}

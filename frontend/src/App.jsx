@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Explore from './pages/Explore';
+import Analytics from './pages/Analytics';
 import AddRecipe from './pages/AddRecipe';
 import Recipe from './pages/Recipe';
 import Bookmarks from './pages/Bookmarks';
@@ -27,8 +28,10 @@ const AppRoutes = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Signup />} />
                 <Route path="/add" element={ <ProtectedRoute><AddRecipe /></ProtectedRoute> } />
+                <Route path="/edit/:id" element={ <ProtectedRoute><AddRecipe /></ProtectedRoute> } />
                 <Route path="/bookmarks" element={ <ProtectedRoute><Bookmarks /></ProtectedRoute> } />
                 <Route path="/my-recipes" element={ <ProtectedRoute><MyRecipes /></ProtectedRoute> } />
+                <Route path="/analytics" element={<Analytics />} />
             </Routes>
         </>
     );

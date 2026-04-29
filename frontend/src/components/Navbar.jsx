@@ -15,6 +15,9 @@ const Navbar = () => {
                     <NavLink to="/explore" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
                         Explore
                     </NavLink>
+                    <NavLink to="/analytics" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+                        Analytics
+                    </NavLink>
                 </div>
 
                 <Link to="/" className="nav-logo">

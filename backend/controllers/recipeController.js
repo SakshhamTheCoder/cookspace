@@ -214,7 +214,18 @@ export const getAvgCookingTime = async (req, res) => {
                 $group: {
                     _id: null,
                     avgBookmarks: { $avg: '$bookmarksCount' }, // $avg
-                    totalRecipes: { $sum: 1 } // $sum
+                    avgCookedCount: { $avg: '$cookedCount' },
+                    totalRecipes: { $sum: 1 }, // $sum
+                    totalCooks: { $sum: '$cookedCount' }
+                }
+            },
+            {
+                $project: {
+                    _id: 0,
+                    avgBookmarks: { $round: ['$avgBookmarks', 1] },
+                    avgCookedCount: { $round: ['$avgCookedCount', 1] },
+                    totalRecipes: 1,
+                    totalCooks: 1
                 }
             }
         ]);
